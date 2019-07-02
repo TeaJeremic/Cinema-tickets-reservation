@@ -1,0 +1,20 @@
+{% extends "_global/adminIndex.html" %}
+
+{% block main %}
+<a href="{{ BASE }}administrator/filmovi/add">
+    Dodaj novi film
+</a>
+
+<ul>
+    {% for film in filmovi %}
+    <li>
+        <a href="{{ BASE }}administrator/filmovi/edit/{{ film.film_id }}">
+            {{ film.naziv|escape }}
+        </a>
+    {% endfor %}
+</ul>
+{% endblock %}
+
+{% block naslov %}
+Spisak filmova
+{% endblock %}

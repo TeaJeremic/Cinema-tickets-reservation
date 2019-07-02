@@ -1,0 +1,20 @@
+{% extends "_global/adminIndex.html" %}
+
+{% block main %}
+<a href="{{ BASE }}administrator/projekcije/add">
+    Dodaj novu projekciju
+</a>
+
+<ul>
+    {% for projekcija in projekcije %}
+    <li>
+        <a href="{{ BASE }}administrator/projekcije/edit/{{ projekcija.projekcija_id }}">
+            {{ projekcija.termin_at|escape }}
+        </a>
+    {% endfor %}
+</ul>
+{% endblock %}
+
+{% block naslov %}
+Spisak projekcija
+{% endblock %}

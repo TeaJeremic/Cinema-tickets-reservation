@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            {% block title %}Bioskop{% endblock %}
+        </title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="{{ BASE }}assets/libs/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="{{ BASE }}assets/libs/font-awesome/css/font-awesome.min.css">
+        <link rel="stylesheet" href="{{ BASE }}assets/css/style.css">
+    </head>
+    <body>
+        <section class="container">
+            <header class="row" id="main-header">
+                <img alt="Banner 1" src="{{ BASE }}assets/img/site/banner.png">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light col col-12">                  
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item"><a class="nav-link" href="{{ BASE }}administrator/film"><i class="fa fa-list"></i> Dodaj film</a>
+                            <li class="nav-item"><a class="nav-link" href="{{ BASE }}administrator/projekcija"><i class="fa fa-list"></i>Dodaj projekciju</a>
+                            <li class="nav-item"><a class="nav-link" href="{{ BASE }}administrator/logout"><i class="fa fa-sign-out"></i> Odjava</a>
+                            
+                        </ul>
+                    </div>
+                </nav>
+            </header>
+
+            <div>
+                {% block main %}
+                ...
+                {% endblock %}
+            </div>
+
+            <aside>
+               
+            </aside>
+            <footer>
+                &copy; Rezervacija bioskopskih karata
+            </footer>
+
+        </section>
+        <script src="{{ BASE }}assets/libs/jquery/dist/jquery.min.js"></script>
+        <script src="{{ BASE }}assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="{{ BASE }}assets/js/bookmarks.js"></script>
+    </body>
+</html>

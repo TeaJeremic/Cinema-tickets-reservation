@@ -1,0 +1,74 @@
+{% extends "_global/adminIndex.html" %}
+
+{% block main %}
+    <a href="{{ BASE }}administrator/projekcije">
+        Spisak svih projekcija
+    </a>
+
+    <div>
+        <form method="post" onsubmit="return validateDodavanjeProjekcijeForms()">
+            
+            <div class="form-group">
+                <label for="termin_at">Termin projekcije: </label>
+                <input class="form-control" type="datetime-local"
+                        required name="termin_at" id="termin_at"
+                        value="{{ projekcija.termin_at }}">
+            </div>
+
+            <div class="form-group">
+                <label for="termin_at">Aktivnost projekcije: </label>
+                <input class="form-control" 
+                pattern="^\[0-1]{1,}$" required name="is_active" id="is_active"
+                        value="{{ projekcija.is_active }}">
+            </div>
+            
+            <div class="form-group">
+                <label for="film_id">Izaberite film: </label>
+                <select id="film_id" name="film_id" class="form-control">
+                    {% for film in filmovi %}
+                        {% if film.film_id == projekcija.film_id %}
+                            <option value="{{ film.film_id }}" selected>
+                                {{ film.naziv }}
+                            </option>
+                        {% else %}
+                            <option value="{{ film.film_id }}">
+                                {{ film.naziv }}
+                            </option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group">
+                    <label for="sala_id">Izaberite salu: </label>
+                    <select id="sala_id" name="sala_id" class="form-control">
+                        {% for sala in sale %}
+                            {% if sala.sala_id == projekcija.sala_id %}
+                                <option value="{{ sala.sala_id }}" selected>
+                                    {{ sala.ime }}
+                                </option>
+                            {% else %}
+                                <option value="{{ sala.sala_id }}">
+                                    {{ sala.ime }}
+                                </option>
+                            {% endif %}
+                        {% endfor %}
+                    </select>
+                </div>
+
+            <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-lg">
+                    Izmenite projekciju
+                </button>
+            </div>
+        </form>
+    </div>
+{% endblock %}
+
+{% block naslov %}
+Izmena projekcije
+{% endblock %}
+
+{% block script %}
+<script src="{{BASE}}assets/js/validateForms.js"></script>
+{% endblock %}

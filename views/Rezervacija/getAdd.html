@@ -1,0 +1,66 @@
+{% extends "_global/index.html" %}
+
+{% block main %}
+<style>
+    .box {
+        border: 1px solid;
+    }
+</style>
+
+
+
+<div class="container">
+    <form method="post" onsubmit="return validateRezervacijaForms()">
+        <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+            <div class="container seat-area">
+                {% for red in range('a', 'e') %}
+                <div class="row">
+                    {% for mesto in range(1, 16) %}
+                   
+                    <button data-toggle="tooltip" data-placement="top" title="{{ red }} {{ mesto }}"
+                        class="btn green seat {% for zauzeto in zauzeta_mesta %}{% if red == zauzeto.red and mesto == zauzeto.broj_sedista %} disabled red{% endif %} {% endfor %}"
+                        id="red_mesto">
+                        <div class="btn-group-toggle col-xs-1 " data-toggle="buttons">
+                            <label class="btn transparent active">
+                            </label>
+                        </div>
+                    </button>
+                   
+                    <input class="btn green seat {% for zauzeto in zauzeta_mesta %}{% if red == zauzeto.red and mesto == zauzeto.broj_sedista %} red{% endif %} {% endfor %}" 
+                    {% for zauzeto in zauzeta_mesta %}{% if red == zauzeto.red and mesto == zauzeto.broj_sedista %} 
+                    disabled checked {% endif %} {% endfor %} type="checkbox" name="mesta[]" value="{{red}}{{ mesto }}"> {{ mesto }}
+                    {% endfor %}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="ime_korisnika">Ime: {{rezervacija.ime_korisnika}} </label>
+            <input class="form-control" type="text" pattern=".*[^\s]{3,}.*" required name="ime_korisnika" id="ime_korisnika">
+        </div>
+        <div class="form-group">
+            <label for="prezime_korisnika">Prezime: {{rezervacija.prezime_korisnika}} </label>
+            <input class="form-control" type="text" pattern=".*[^\s]{3,}.*" required name="prezime_korisnika" id="prezime_korisnika">
+        </div>
+        <div class="form-group">
+            <label for="broj_telefona">Broj telefona: {{rezervacija.broj_telefona}} </label>
+            <input class="form-control" type="text" pattern="^\+[0-9]{6,24}$" required name="broj_telefona" id="broj_telefona">
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-lg" >
+                Sačuvajte rezervaciju
+            </button>
+        </div>
+    </form>
+</div>
+
+
+{% endblock %}
+
+{% block naslov %}
+Rezervacija
+{% endblock %}
+
+{% block script %}
+<script src="{{BASE}}assets/js/validateForms.js"></script>
+{% endblock %}

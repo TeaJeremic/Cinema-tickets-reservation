@@ -1,0 +1,16 @@
+{% extends "_global/index.html" %}
+
+{% block main %}
+<a href="{{ BASE }}mesto/{{ mesto.mesto_id }}">
+    Mesta u sali
+</a>
+<a href="{{ BASE }}rezervacija/projekcije">
+    Spisak svih projekcija
+</a>
+<p>{{ message|escape }}</p>
+
+{% endblock %}
+
+{% block naslov %}
+Izbor mesta
+{% endblock %}

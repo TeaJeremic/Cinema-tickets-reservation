@@ -2,7 +2,7 @@
 namespace App\Controllers;
 
 use App\Core\ApiController;
-use App\Models\AuctionModel;
+use App\Models\ProjekcijaModel;
 
 class BookmarkApiController extends ApiController {
     public function getBookmarks() {

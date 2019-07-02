@@ -2,26 +2,47 @@
     margin-bottom: 30px;
 }
 
-.category-item {
+.film-item {
     margin-bottom: 15px;
 }
 
-.category-item .card-body {
+.film-item .card-body {
     min-height: 120px;
-}
-
-.social-icons i {
-    font-size: 24px;
-    padding: 3px;
-    display: inline-block;
-    margin: 2px 3px;
-    color: #dc0004;
 }
 
 footer {
     text-align: center;
 }
 
-.auction-item {
+.film-item {
     margin-bottom: 10px;
+}
+
+.seat-area{
+    margin-bottom: 20px;
+}
+
+.seat:nth-child(4n){
+margin-right: 25px;
+}
+
+/* .seat:nth-child(5n+1){
+    margin-right: 10px;
+} */
+
+.seat:last-child{
+    margin-right: 0;
+}
+.transparent{
+    color: white;
+    background-color: rgba(0,0,0,0.1)
+}
+.green{
+    
+    background-color: rgb(45, 112, 45) !important;
+    color: green;
+}
+.red{
+    background-color: red !important;
+    color: red;
 }

@@ -43,7 +43,7 @@ $controllerInstance = new $fullControllerName($dbCon);
 $controllerInstance->setSession($session);
 
 $controllerInstance->__pre();
-call_user_func_array([ $controllerInstance, $method ], $parameters);
+call_user_func_array([ $controllerInstance, $method ], $parameters);/* ovdje izbacuje gresku */
 
 $controllerInstance->getSession()->save();
 
@@ -65,6 +65,7 @@ $twig = new Twig_Environment($loader, [
 ]);
 
 $data['BASE'] = BASE;
+$data['SESSION'] = $session->getData();
 
 echo $twig->render(
     $foundRoute->getControllerName() . '/' . $foundRoute->getMethodName() . '.html',

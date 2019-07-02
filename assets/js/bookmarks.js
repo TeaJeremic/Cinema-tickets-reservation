@@ -1,5 +1,5 @@
 function addBookmark(id) {
-    fetch('/nedelja01/api/bookmarks/add/' + id, {
+    fetch('/bioskop/api/bookmarks/add/' + id, {
         credentials: "include"
     })
     .then(response => response.json())
@@ -9,7 +9,7 @@ function addBookmark(id) {
 }
 
 function clearBookmarks() {
-    fetch('/nedelja01/api/bookmarks/clear/', {
+    fetch('/bioskop/api/bookmarks/clear/', {
         credentials: "include"
     })
     .then(response => response.json())
@@ -19,7 +19,7 @@ function clearBookmarks() {
 }
 
 function getBookmarks() {
-    fetch('/nedelja01/api/bookmarks/', {
+    fetch('/bioskop/api/bookmarks/', {
         credentials: "include"
     })
     .then(response => response.json())
@@ -38,7 +38,7 @@ function displayBookmarks(bookmarks) {
         let link = document.createElement('a');
         link.style.display = 'block';
         link.innerText = bookmark.title;
-        link.setAttribute('href', '/nedelja01/auction/' + bookmark.auction_id);
+        link.setAttribute('href', '/bioskop/projekcija/' + bookmark.projekcija_id);
         link.setAttribute('target', '_blank');
 
         div.appendChild(link);
@@ -51,7 +51,7 @@ function displayBookmarks(bookmarks) {
 
         div.appendChild(clearButton);
     } else {
-        div.innerText = 'Niste dodali aukcije...';
+        div.innerText = 'Niste dodali projekciju...';
     }
 }
 

@@ -2,8 +2,8 @@
 
 {% block main %}
     <div>
-        <form method="post">
-            Username: <input type="text" name="username"><br>
+        <form method="post" onsubmit="return validatePrijavaForms()">
+            Username: <input type="text" name="username" pattern="[A-Za-z0-9]{3,}"><br>
             Password: <input type="password" name="password"><br>
             <button type="submit">Log in</button>
         </form>
@@ -11,5 +11,9 @@
 {% endblock %}
 
 {% block naslov %}
-Logovanje
+Prijava
+{% endblock %}
+
+{% block script %}
+<script src="{{BASE}}assets/js/validateForms.js"></script>
 {% endblock %}

@@ -1,0 +1,20 @@
+{% extends "_global/adminIndex.html" %}
+
+{% block main %}
+    <div class="card">
+        <div class="card-header">
+            Opcije dostupne administratoru
+        </div>
+        <div class="card-body">
+            <div class="card-text">
+                <a href="{{ BASE }}administrator/filmovi" class="btn btn-primary">
+                    Otvorite listu filmova
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block naslov %}
+Dashboard
+{% endblock %}

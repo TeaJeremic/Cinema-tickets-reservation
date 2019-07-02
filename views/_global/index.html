@@ -2,11 +2,10 @@
 <html>
     <head>
         <title>
-            {% block title %}Aukcije{% endblock %}
+            {% block title %}Bioskop{% endblock %}
         </title>
         <meta charset="utf-8">
 
-        <!-- <link rel="stylesheet" href="{{ BASE }}assets/css/main.css"> -->
         <link rel="stylesheet" href="{{ BASE }}assets/libs/bootstrap/dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="{{ BASE }}assets/libs/font-awesome/css/font-awesome.min.css">
         <link rel="stylesheet" href="{{ BASE }}assets/css/style.css">
@@ -14,25 +13,22 @@
     <body>
         <section class="container">
             <header class="row" id="main-header">
-                <div class="col col-12 col-lg-6">
                     <img alt="Banner 1" src="{{ BASE }}assets/img/site/banner.png">
-                </div>
 
-                <div class="col col-12 col-lg-6">
-                    <div class="social-icons">
-                        <a href="#" target="_blank"><i class="fa fa-facebook"></i></a>
-                        <a href="#" target="_blank"><i class="fa fa-twitter"></i></a>
-                        <a href="#" target="_blank"><i class="fa fa-instagram"></i></a>
-                        <a href="#" target="_blank"><i class="fa fa-linkedin"></i></a>
-                        <a href="#" target="_blank"><i class="fa fa-youtube"></i></a>
-                        <a href="#" target="_blank"><i class="fa fa-pinterest"></i></a>
-                    </div>
-
-                    <div>
+               
+                <nav class="navbar navbar-expand-lg navbar-light bg-light col col-12">
+                    
+                    
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item"><a class="nav-link" href="{{ BASE }}filmovi"><i class="fa fa-list"></i> Repertoar</a>
+                            <li class="nav-item"><a class="nav-link" href="{{ BASE }}sala"><i class="fa fa-list"></i> Sala</a>
+                            <li class="nav-item"><a class="nav-link" href="{{ BASE }}administrator/login"><i class="fa fa-sign-in"></i> Prijava</a>
+                        </ul>
                         <form method="post" action="{{ BASE }}search">
                             <div class="form-group">
                                 <div class="input-group">
-                                    <input type="text" placeholder="Kljucne reci" name="search" class="form-control">
+                                    <input type="text" placeholder="Pretražite filmove" name="search" class="form-control">
                                     <div class="input-group-append">
                                         <button type="submit" class="btn btn-outline-dark">
                                             <i class="fa fa-search"></i>
@@ -42,22 +38,10 @@
                             </div>
                         </form>
                     </div>
-                </div>
-
-                <nav class="navbar navbar-expand-lg navbar-light bg-light col col-12">
-                    <a class="navbar-brand" href="{{ BASE }}"><i class="fa fa-home"></i></a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
+                   
                     
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav mr-auto">
-                            <li class="nav-item"><a class="nav-link" href="{{ BASE }}categories"><i class="fa fa-list"></i> Kategorije</a>
-                            <li class="nav-item"><a class="nav-link" href="{{ BASE }}user/register"><i class="fa fa-user-plus"></i> Registracija</a>
-                            <li class="nav-item"><a class="nav-link" href="{{ BASE }}user/login"><i class="fa fa-sign-in"></i> Prijava</a>
-                            <li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-envelope"></i> Kontakt</a>
-                        </ul>
-                    </div>
+                        
+                    
                 </nav>
             </header>
 
@@ -68,13 +52,12 @@
             </div>
 
             <aside>
-                Sajdbar sadrzaj...
+               
             </aside>
             <footer>
-                &copy; 2019 Praktikum Internet i veb tehnologije
+                &copy; Rezervacija bioskopskih karata
             </footer>
 
-            <div id="bookmarks"></div>
         </section>
 
         <script src="{{ BASE }}assets/libs/jquery/dist/jquery.min.js"></script>

@@ -1,0 +1,45 @@
+{% extends "_global/index.html" %}
+
+
+{% block title %}
+Rezultati pretrage
+{% endblock %}
+
+{% block main %}
+<div>
+    {% for film in filmovi %}
+    <div class="card film-item">
+    
+
+
+        <div class="card-body">
+            <h2 href="{{ BASE }}film/{{ film.film_id }}" class="card-title">
+                {{ film.naziv|escape }}
+            </h2>
+            <!--<img src="{{ BASE }}assets/uploads/{{ film.image_path }}" alt="film" class="img-thumbnail">-->
+            <img src="{{ BASE }}assets/uploads/{{ film.film_id }}.jpg" alt="film-{{ film.naziv}}" class="w-100">
+            <p class="card-text"><b>Opis: </b>{{ film.opis|escape }}</p>
+            <p class="card-text"><b>Režiser: </b>{{ film.reziser|escape }}</p>
+            <p class="card-text"><b>Kategorija: </b>{{ film.kategorija|escape }}</p>
+            <p class="card-text"><b>Trajanje filma: </b>{{ film.trajanje|escape }}</p>
+        </div>
+
+        <ul class="spisak-projekcija">
+            {% for projekcija in projekcije %}
+        <li class="spisak-projekcija-item">
+            <a href="{{ BASE }}sala/{{ projekcija.projekcija_id }}">
+                {{ projekcija.termin_at|date('j. n. Y. H.i') }}
+            </a>
+
+            {% endfor %}
+
+    </ul>
+</div>
+<script>
+<link rel="stylesheet" href="{{ BASE }}assets/libs/bootstrap/dist/css/bootstrap.min.css">   
+        <link rel="stylesheet" href="{{ BASE }}assets/libs/font-awesome/css/font-awesome.min.css">
+        <link rel="stylesheet" href="{{ BASE }}assets/css/style.css">>
+</script>
+{% endfor %}
+</div>
+{% endblock %}

@@ -4,15 +4,15 @@
     use App\Core\Validator;
 
     class NumberValidator implements Validator {
-        private $isSigned;
+        private $isSigned; //da li je vrednost negativna
         private $isReal;
-        private $maxIntegerDigits;
-        private $maxDecimalDigits;
+        private $maxIntegerDigits; //maksimalan broj cifara
+        private $maxDecimalDigits; //minimalan broj cifara
 
         public function __construct() {
-            $this->isSigned = true;
+            $this->isSigned = false; 
             $this->isReal   = true;
-            $this->maxIntegerDigits = 10;
+            $this->maxIntegerDigits = 10; 
             $this->maxDecimalDigits = 2;
         }
 
@@ -77,14 +77,8 @@
             if (!isset($deloviBroja[1])) {
                 return true;
             }
-
-            $decimalniDeo = $deloviBroja[1];
-
-            if (strlen($decimalniDeo) > $this->maxDecimalDigits) {
-                return false;
-            }
-
             return true;
+            
         }
     }
     

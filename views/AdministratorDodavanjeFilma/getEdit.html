@@ -1,0 +1,71 @@
+{% extends "_global/adminIndex.html" %}
+
+{% block main %}
+    <a href="{{ BASE }}administrator/filmovi">
+        Spisak svih filmova
+    </a>
+
+    <div>
+     <form method="post" enctype="multipart/form-data" onsubmit="return validateDodavanjeFilmaForms()"> 
+    
+    <div class="form-group">
+        <label for="naziv">Naziv filma: </label>
+        <input class="form-control" type="text"
+        pattern="^\+.'![0-9a-zA-Z]{3,}$" required name="naziv" id="naziv"
+               value="{{ film.naziv }}">
+    </div>
+
+    <div class="form-group">
+        <label for="opis">Opis filma: </label>
+        <textarea class="form-control" pattern="^\+.'!,[0-9a-zA-Z]{3,}$" required
+                  name="opis" id="opis">
+                  {{ film.opis }}</textarea>
+    </div>
+
+    <div class="form-group">
+        <label for="ime">Reziser: </label>
+        <input class="form-control" type="text"
+        pattern="^\.'!,[a-zA-Z]{3,}$" required name="ime" id="ime"
+               value="{{ film.reziser }}">
+    </div>
+
+    <div class="form-group">
+        <label for="trajanje">Trajanje filma: </label>
+        <input class="form-control" type="text"
+        pattern="^\.',[0-9a-zA-Z]{2,}$" required name="trajanje" id="trajanje"
+               value="{{ film.trajanje_at }}">
+    </div>
+    <div class="form-group">
+        <label for="kategorija">Kategorija filma: </label>
+        <input class="form-control" type="text"
+        pattern="^\.',[a-zA-Z]{3,}$" required name="kategorija" id="kategorija">
+    </div>
+
+    <!--<div class="form-group">
+        <label for="kategorija">Aktivnost filma: </label>
+        <input class="form-control" type="text"
+        pattern="^\.',[a-zA-Z]{3,}$" required name="aktivnost_filma" id="aktivnost_filma">
+    </div>
+-->
+    
+    <div class="form-group">
+        <label for="image">Izaberite sliku </label>
+        <input class="form-control-file" type="file" required name="image" id="image" accept="image/jpeg">
+    </div>
+
+    <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-lg">
+            Izmeni film
+        </button>
+    </div>
+    </form>
+</div>
+{% endblock %}
+
+{% block naslov %}
+Izmena filma
+{% endblock %}
+
+{% block script %}
+<script src="{{BASE}}assets/js/validateForms.js"></script>
+{% endblock %}

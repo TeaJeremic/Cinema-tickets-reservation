@@ -2,15 +2,18 @@
 
 {% block main %}
 <div class="row">
-    {% for category in categories %}
+    {% for film in filmovi %}
     <div class="col col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3">
-        <div class="card category-item">
+        <div class="card film-item">
             <div class="card-body">
-                <a href="{{ BASE }}category/{{ category.category_id }}" class="card-title">
-                    {{ category.name|escape }}
+                <a href="{{ BASE }}film/{{ film.film_id }}" class="card-title">
+                    {{ film.naziv|escape }}
                 </a>
-
-                <p class="card-text">Broj aukcija u kategoriji je: NN</p>
+                <img src="{{ BASE }}assets/uploads/{{ film.film_id }}.jpg" alt="Slika filma - {{ film.naziv }}"
+                class="w-100">
+                <!--<p class="card-text"><b>Opis filma: </b>{{ film.opis|escape }} </p>-->
+                <p class="card-text"><b>Režiser: </b>{{ film.reziser|escape }} </p>
+                
             </div>
         </div>
     </div>
@@ -19,5 +22,5 @@
 {% endblock %}
 
 {% block naslov %}
-Spisak kategorija
+Spisak filmova
 {% endblock %}
