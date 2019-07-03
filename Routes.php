@@ -42,6 +42,7 @@
         Route::post('#^administrator/projekcije/add/?$#',             'AdministratorDodavanjeProjekcija', 'postAdd'),
         Route::get('#^administrator/projekcije/edit/([0-9]+)/?$#',    'AdministratorDodavanjeProjekcija', 'getEdit'),
         Route::post('#^administrator/projekcije/edit/([0-9]+)/?$#',   'AdministratorDodavanjeProjekcija', 'postEdit'),
+        Route::get('#^administrator/projekcije/rezervacije/([0-9]+)/?$#',   'AdministratorDodavanjeProjekcija', 'reservationsByProjection'),
 
         
         # Secret routes

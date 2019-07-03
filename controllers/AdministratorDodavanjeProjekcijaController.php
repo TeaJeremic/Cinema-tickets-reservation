@@ -5,6 +5,8 @@ use App\Core\AdministratorController;
 use App\Models\FilmModel;
 use App\Models\SalaModel;
 use App\Models\ProjekcijaModel;
+use App\Models\RezervacijaModel;
+use App\Validators\DatumProjekcijeValidator;
 
 class AdministratorDodavanjeProjekcijaController extends AdministratorController {
 
@@ -29,12 +31,22 @@ class AdministratorDodavanjeProjekcijaController extends AdministratorController
         $termin_at = filter_input(INPUT_POST, 'termin_at', FILTER_SANITIZE_STRING);
         $filmId = filter_input(INPUT_POST, 'film_id', FILTER_SANITIZE_NUMBER_INT);
         $salaId = filter_input(INPUT_POST, 'sala_id', FILTER_SANITIZE_NUMBER_INT);
+
+        
        
         $pm = new ProjekcijaModel($this->getDatabaseConnection());
 
         $termin_at .= ':00';
        
         $termin_at = str_replace('T', ' ', $termin_at);
+
+        $validator = new DatumProjekcijeValidator();
+
+        if(!$validator->validateProjekcija($termin_at)){
+            $this->set('message', 'Neispravan datum projekcije.');
+            return;
+        }
+
         $projekcijaId=$pm->add([
             'termin_at' => $termin_at,
             'film_id' => $filmId,
@@ -54,8 +66,12 @@ class AdministratorDodavanjeProjekcijaController extends AdministratorController
 
     public function getEdit($id) { //pribavljanje id za izmenu projekcije
         $pm = new ProjekcijaModel($this->getDatabaseConnection());
+        $fm= new FilmModel($this->getDatabaseConnection());
+        $sm= new SalaModel($this->getDatabaseConnection());
 
         $projekcija = $pm->getById($id);
+        $filmovi = $fm->getAll();
+        $sale = $sm->getAll();
 
         if (!$projekcija) {
             \ob_clean();
@@ -64,6 +80,8 @@ class AdministratorDodavanjeProjekcijaController extends AdministratorController
         }
 
         $this->set('projekcija', $projekcija);
+        $this->set('filmovi', $filmovi);
+        $this->set('sale', $sale);
     }
     
     
@@ -92,5 +110,10 @@ class AdministratorDodavanjeProjekcijaController extends AdministratorController
         exit;
     }
 
-   
+    public function reservationsByProjection($projekcijaId){
+        $rm = new RezervacijaModel($this->getDatabaseConnection());
+        $rezervacije = $rm->getReservationsByProjekcijaId($projekcijaId);
+
+        $this->set('rezervacije', $rezervacije);
+    }
 }

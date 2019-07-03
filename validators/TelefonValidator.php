@@ -5,9 +5,9 @@
     use App\Core\StringValidator;
     use App\Core\NumberValidator;
 
-    class TextValidator extends StringValidator {
+    class TelefonValidator extends StringValidator {
         public function matchPattern(string $value) {
-            if(!\preg_match( '|([0-9a-zA-Z\.\'\! ]){3,}|', $value)){
+            if(!\preg_match( '|\+[0-9]{6,24}|', $value)){
                 return false;
             }
             return $this->isValid($value);

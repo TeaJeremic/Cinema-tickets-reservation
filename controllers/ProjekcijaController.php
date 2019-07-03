@@ -16,13 +16,5 @@ class ProjekcijaController extends Controller {
         }
     }
 
-    public function postSearch() {
-        $keyword = filter_input(INPUT_POST, 'search', FILTER_SANITIZE_STRING);
-
-        $pm = new ProjekcijaModel($this->getDatabaseConnection());
-
-        $projekcije = $pm->getAllByFilmId($keyword);
-
-        $this->set('projekcije', $projekcije);
-    }
+    
 }

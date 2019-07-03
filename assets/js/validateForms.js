@@ -3,14 +3,14 @@ function validateDodavanjeFilmaForms() {
     document.querySelector('#error-message').innerHTML = '';
 
     let naziv = document.getElementById('naziv').value;
-    if (!naziv.match(/^\+.'![0-9a-zA-Z]{3,}$/)) {
+    if (!naziv.match(/^([0-9a-zA-Z\.\'\! ]){3,}$/)) {
         document.querySelector('#error-message').innerHTML += 'Naziv mora sadrzati najmanje 3 vidljiva uzastopna karaktera.<br>';
         document.querySelector('#error-message').classList.remove('d-none');
         status = false;
     }
 
     let opis = document.getElementById('opis').value;
-    if (!opis.match(/^\+.'!,[0-9a-zA-Z]{3,}$/)) {
+    if (!opis.match(/^([0-9a-zA-Z\.\'\! ]){3,}$/)) {
         document.querySelector('#error-message').innerHTML += 'Opis mora sadrzati najmanje 3 vidljiva uzastopna karaktera.<br>';
         document.querySelector('#error-message').classList.remove('d-none');
         status = false;
@@ -20,21 +20,21 @@ function validateDodavanjeFilmaForms() {
    
 
     let reziser = document.getElementById('reziser').value;
-    if (!reziser.match(/^\.'!,[a-zA-Z]{3,}$/)) {
+    if (!reziser.match(/^[a-zA-Z ]{2,}$/)) {
         document.querySelector('#error-message').innerHTML += 'Reziser mora sadrzati najmanje 3 vidljiva uzastopna karaktera.<br>';
         document.querySelector('#error-message').classList.remove('d-none');
         status = false;
     }
 
     let trajanje = document.getElementById('trajanje').value;
-    if (!trajanje.match(/^\.',[0-9a-zA-Z]{2,}$/)) {
+    if (!trajanje.match(/^[0-9]{2,}$/)) {
         document.querySelector('#error-message').innerHTML += 'Trajanje filma mora imati minimum 2 uzastopna karaktera.<br>';
         document.querySelector('#error-message').classList.remove('d-none');
         status = false;
     }
 
     let kategorija = document.getElementById('kategorija').value;
-    if (!kategorija.match(/^\.',[a-zA-Z]{3,}$/)) {
+    if (!kategorija.match(/^[a-zA-Z ]{2,}$/)) {
         document.querySelector('#error-message').innerHTML += 'Kategorija mora sadrzati najmanje 3 vidljiva uzastopna karaktera.<br>';
         document.querySelector('#error-message').classList.remove('d-none');
         status = false;
@@ -91,8 +91,8 @@ function validateDodavanjeFilmaForms() {
             document.querySelector('#error-message').innerHTML = '';
 
             let username = document.getElementById('username').value;
-        if (!username.match(/[A-Za-z0-9]{3,}/)) {
-            document.querySelector('#error-message').innerHTML += 'Korisnicko ime mora sadrzati najmanje 3 vidljiva uzastopna karaktera.<br>';
+        if (!username.match(/^[a-zA-Z ]{2,}$/)) {
+            document.querySelector('#error-message').innerHTML += 'Korisnicko ime mora sadrzati najmanje 2 vidljiva uzastopna karaktera.<br>';
             document.querySelector('#error-message').classList.remove('d-none');
             status = false;
         }

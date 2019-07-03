@@ -5,14 +5,17 @@
     Dodaj novu projekciju
 </a>
 
-<ul>
+<ol>
     {% for projekcija in projekcije %}
-    <li>
+    <li class="my-2">
         <a href="{{ BASE }}administrator/projekcije/edit/{{ projekcija.projekcija_id }}">
             {{ projekcija.termin_at|escape }}
         </a>
+        <a class="btn btn-primary " href="{{ BASE }}administrator/projekcije/rezervacije/{{ projekcija.projekcija_id }}">
+            rezervacije
+        </a>
     {% endfor %}
-</ul>
+</ol>
 {% endblock %}
 
 {% block naslov %}

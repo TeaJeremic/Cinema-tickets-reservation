@@ -20,7 +20,6 @@ class RezervacijaController extends Controller {
         $prezime_korisnika = filter_input(INPUT_POST, 'prezime_korisnika', FILTER_SANITIZE_STRING);
         $broj_telefona = filter_input(INPUT_POST, 'broj_telefona', FILTER_SANITIZE_STRING);
         $mesta = filter_input(INPUT_POST, 'mesta', FILTER_DEFAULT, FILTER_REQUIRE_ARRAY);
-        //$mesta = $_POST['mesta'];
         
         $rm = new RezervacijaModel($this->getDatabaseConnection());
         $rmm = new RezervacijaMestaModel($this->getDatabaseConnection());
@@ -33,13 +32,14 @@ class RezervacijaController extends Controller {
         $rezervacijaId = $rm->add([
             'ime_korisnika' => $ime_korisnika,
             'prezime_korisnika' => $prezime_korisnika,
-            'broj_telefona' => $broj_telefona
+            'broj_telefona' => $broj_telefona,
+            'projekcija_id' => $projekcija_id
         ]);
+
         if (!$rezervacijaId) {
             $this->set('message', 'Došlo je do greške prilikom rezervacije.');
             return;
         }
-
         foreach($mesta as $mesto) {
             $mesto_id = $mm->add([
                 'sala_id'       => $sala_id,
@@ -48,6 +48,7 @@ class RezervacijaController extends Controller {
                 'is_active'     => 0,
                 'projekcija_id' => $projekcija_id
                 ]);
+
             if (!$mesto_id) {
                 $this->set('message', 'Došlo je do greške prilikom rezervacije mesta.');
                 return;
@@ -56,6 +57,7 @@ class RezervacijaController extends Controller {
                 'mesto_id'       => $mesto_id,
                 'rezervacija_id' => $rezervacijaId
                 ]);
+
             if (!$rezervacija_mesta_id) {
                 $this->set('message', 'Došlo je do greške prilikom rezervacije mesta.');
                 return;
